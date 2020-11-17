@@ -1,0 +1,597 @@
+/* JOPLIN MILFORD UI */
+
+/**************************************************************************************************
+ *  VARIABLES
+ *************************************************************************************************/
+
+html {
+  /* TWEAK: Adapt base colors here */
+  --primary: rgb(65 105 225);
+  --dark: #1e272e; /* content background */
+  --grey: rgb(43, 52, 59); /* side-bar, ... */
+  --grey2: rgb(36, 46, 52); /* side-bar highlight */
+  --white: rgb(255, 255, 255); /* default font color */
+  --icons: rgb(124, 130, 141);
+
+  --overlay-dark1: rgba(0, 0, 0, 0.1);
+  --overlay-dark2: rgba(0, 0, 0, 0.2);
+  --overlay-dark5: rgba(0, 0, 0, 0.5);
+  --overlay-light1: rgba(255, 255, 255, 0.1);
+  --overlay-light5: rgba(255, 255, 255, 0.5);
+
+  /* TWEAK: Show shadow on floating buttons and local search */
+  /* --shadow: 0 2px 12px 0 var(--overlay-dark2); */
+  --shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.06);
+
+  /* TWEAK: Set to none if no borders shall be shown (not tested) */
+  --default-border: 1px solid var(--dark);
+
+  /* TWEAK: Change to adapt the style of the corners of some UI elements */
+  --button-radius: 5px;
+  --dialog-radius: 10px;
+  --input-radius: 10px;
+  --scroll-radius: 3px;
+
+  --opacity-full: 1;
+  --opacity-0-8: 0.8;
+  --opacity-0-5: 0.5;
+
+  /* TWEAK: Change the style of the tags */
+  --tag-color: var(--primary);
+  --tag-font-color: var(--white);
+  --tag-radius: 100px;
+}
+
+/**************************************************************************************************
+ *  DISABLING UI ELEMENTS
+ *************************************************************************************************/
+
+/* TWEAK: Show/hide "All notes" icon in side-bar (comment out to show) */
+i.icon-notes {
+  display: none !important;
+}
+
+/* TWEAK: Show/hide new folder button */
+/* .side-bar > div > div > button {
+  display: none !important;
+} */
+
+/* TWEAK: Show/hide "last changed" timestamp next to the note title */
+.rli-editor > div > div > div > div > input + span {
+  display: none !important;
+}
+
+/* TWEAK: Show/hide "Spell checker" button on note toolbar */
+.editor-toolbar a[title="Spell checker"] {
+  display: none !important;
+}
+
+/* TWEAK: Show/hide editor toolbar (not in WYSIWYG editor mode and also not the toolbar next to the note title) */
+/* .rli-editor > div > div > div > div > div > div > div.editor-toolbar {
+  display: none !important;
+} */
+
+/* TWEAK: Show/hide toggle editors button */
+/* button[title="Toggle editors"] {
+  display: none !important;
+} */
+
+/* TWEAK: Show/hide "click to add tags..." (if note already has tags) */
+a[Title="Tags"] + div > span {
+  display: none !important;
+}
+
+/* TWEAK: Show/hide line numbers in CodeMirror */
+/* .CodeMirror-line:before {
+  display: none !important;
+} */
+
+/**************************************************************************************************
+ *  GLOBAL STYLES
+ *************************************************************************************************/
+
+/* user inputs */
+input,
+select {
+  background: var(--grey2) !important;
+  border-radius: var(--input-radius) !important;
+  border: var(--default-border) !important;
+  font-family: Roboto !important;
+  opacity: var(--opacity-0-8);
+  padding: 3px 8px !important;
+  transition: 0.2s;
+}
+input:focus,
+select:focus {
+  opacity: var(--opacity-full);
+}
+
+/* buttons */
+button,
+/* codemirror */
+.smalltalk .page button,
+/* tinymce */
+.tox button[class^="tox-button"] {
+  border-radius: var(--button-radius) !important;
+  box-shadow: none !important;
+  color: var(--primary) !important;
+  cursor: pointer !important;
+  font-weight: normal !important;
+  text-shadow: none !important;
+}
+.smalltalk .page button,
+.tox button[class^="tox-button"] {
+  background: none !important;
+  border: var(--default-border) !important;
+}
+
+/* icons */
+.fas {
+  background: none !important;
+}
+
+/* table cells */
+th {
+  background-color: var(--overlay-dark1) !important;
+}
+
+/* global tag style */
+.css-19qsih1-multiValue,
+.tags a.list-item,
+.tag-list span {
+  background-color: var(--tag-color) !important;
+  border-radius: var(--tag-radius) !important;
+  color: var(--tag-font-color) !important;
+  flex: 0 !important;
+  font-size: x-small !important;
+  font-weight: normal !important;
+  padding: 3px 6px !important;
+}
+.tags .list-item-container {
+  height: auto !important;
+  margin-bottom: 2px;
+}
+/* style of tags in 'add or remove tag' prompt */
+.css-15g31wo,
+.css-1n5lu3i,
+.css-d0yvbe {
+  border-radius: var(--tag-radius) !important;
+  color: var(--tag-font-color) !important;
+}
+
+/* decrease opacity of icons and labels */
+/* new notebook button */
+.side-bar > div > div > button,
+/* external editing button */
+.note-list .list-item-container i,
+.icon-share,
+/* last changed timestamp */
+.rli-editor > div > div > div > input + span,
+/* toolbar buttons */
+.editor-toolbar .button,
+.tox .tox-tbtn,
+/* toggle editors button */
+button[title="Toggle editors"],
+/* help buttons */
+.fa-question-circle,
+/* tags buttons */
+span.icon-tags,
+/* click to add tags label */
+a[Title="Tags"] + div > span {
+  color: var(--icons) !important;
+  /* opacity: 0.6 !important; */
+}
+/* disabled buttons */
+a.button.disabled {
+  /* opacity: 0.3 !important; */
+}
+
+/* date picker */
+.rdtPicker {
+  border-radius: var(--dialog-radius) !important;
+  padding: 8px !important;
+}
+/* .rdtPicker td.rdtToday {
+} */
+/* .rdtPicker td.rdtDay:hover {
+} */
+
+/**************************************************************************************************
+ *  PANELS
+ *************************************************************************************************/
+
+.rli-root {
+  background: var(--grey) !important;
+}
+
+/* general panel styles */
+.rli-root > div.resizableLayoutItem {
+  border-right: var(--default-border) !important;
+}
+.rli-root > div.resizableLayoutItem > div.resizableLayoutItem {
+  border-bottom: var(--default-border) !important;
+}
+.rli-root > div.resizableLayoutItem > div {
+  min-width: 150px !important;
+  width: 100%;
+}
+div.resizableLayoutItem > div > div {
+  /* height: 100%; */
+}
+/* remove border from plugin iframes */
+div.resizableLayoutItem iframe {
+  border-bottom: none !important;
+}
+
+/* highlight splitters (vertical and horizontal) while dragging */
+.resizableLayoutItem > span > div {
+  z-index: 100 !important;
+}
+.resizableLayoutItem > span > div:hover,
+.resizableLayoutItem > span > div:active {
+  background: var(--primary);
+  opacity: var(--opacity-0-8);
+}
+.resizableLayoutItem > span > div:hover {
+  opacity: var(--opacity-0-5);
+}
+
+/* scrollbars */
+::-webkit-scrollbar-thumb {
+  background-color: var(--overlay-dark1) !important;
+  border-radius: var(--scroll-radius) !important;
+}
+
+/**************************************************************************************************
+ *  SIDEBAR
+ *************************************************************************************************/
+
+.side-bar {
+  background: var(--grey) !important;
+}
+.side-bar .list-item-container:hover {
+  background-color: var(--grey2) !important;
+}
+
+/* folders */
+.folders > div:first-of-type > a {
+  text-transform: uppercase !important;
+}
+
+/* synchronize area */
+.side-bar > div:last-of-type {
+  border-top: var(--default-border) !important;
+  text-align: center !important;
+}
+.side-bar > div:last-of-type div {
+  color: var(--white) !important;
+  opacity: var(--opacity-0-8);
+}
+
+/* synchronize button */
+.side-bar > div:last-of-type > button {
+  background-color: var(--dark) !important;
+  border: none !important;
+  opacity: var(--opacity-0-8) !important;
+  transition: 0.2s;
+}
+.side-bar > div:last-of-type > button:hover {
+  opacity: var(--opacity-full) !important;
+}
+.side-bar > div:last-of-type > button span {
+  color: var(--icons) !important;
+  text-transform: uppercase !important;
+}
+
+/**************************************************************************************************
+ *  NOTE LIST
+ *************************************************************************************************/
+
+div[height="50"] {
+  height: auto !important;
+}
+
+/* icon search */
+.rli-noteList > div span[class$="icon-search"] {
+  color: var(--icons) !important;
+}
+
+/* note list */
+.rli-noteList div {
+  /* remove border-right - introduced in 1.3.7 */
+  border-right: none !important;
+}
+.rli-noteList > div > div > div {
+  background: var(--grey) !important;
+}
+/* .rli-noteList > div > :not(.item-list.note-list),
+.rli-noteList > div > div > div:not(.item-list.note-list):last-of-type > div {
+  background: none !important;
+  text-align: center !important;
+} */
+
+/* note list entries */
+.item-list.note-list .list-item-container {
+  margin-left: 4px !important;
+}
+.item-list.note-list .list-item-container > a {
+  padding: 0 4px !important;
+}
+.item-list.note-list .list-item-container > div {
+  padding-left: 4px !important;
+}
+.item-list.note-list .list-item-container:hover {
+  background-color: var(--grey2) !important;
+}
+.item-list.note-list .list-item-container > a > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.item-list.note-list .list-item-container::before {
+  border-color: var(--dark) !important;
+  left: 0 !important;
+  width: 100% !important;
+}
+
+/* floating new note button */
+div[height="50"] > div:nth-child(2) {
+  bottom: 12px;
+  position: absolute;
+  z-index: 20 !important;
+}
+div[height="50"] > div:nth-child(2) button {
+  background: var(--primary) !important;
+  border-radius: 10px !important;
+  box-shadow: var(--shadow) !important;
+  display: flex !important;
+  margin: 0 10px 0 0 !important;
+  min-height: 35px !important;
+  min-width: 35px !important;
+  transition: 0.2s;
+}
+div[height="50"] > div:nth-child(2) button:hover {
+  opacity: var(--opacity-0-8) !important;
+}
+div[height="50"] > div:nth-child(2) button span {
+  color: var(--white) !important;
+}
+
+/**************************************************************************************************
+ *  EDITOR
+ *************************************************************************************************/
+
+/* editor column */
+.rli-editor > div {
+  padding: 0px !important;
+  width: 100% !important;
+}
+
+/* empty notebook or no note selected */
+.rli-editor > div:empty {
+  background-color: var(--grey) !important;
+  opacity: var(--opacity-full) !important;
+}
+
+/* note title bar */
+.rli-editor > div > div > div > div:first-of-type {
+  background-color: var(--grey) !important;
+  box-shadow: var(--shadow) !important;
+  height: 40px !important;
+  padding: 5px !important;
+  z-index: 10 !important;
+}
+/* .rli-editor > div > div > div > div:first-of-type > .editor-toolbar {
+  background-color: var(--grey) !important;
+} */
+
+/* note title */
+.rli-editor > div > div > div > div > input {
+  /* background: var(--dark) !important;
+  border-radius: var(--dialog-radius) var(--dialog-radius) 0 0 !important;
+  height: 40px;
+  margin-left: 0 !important;
+  margin-top: 10px;
+  opacity: 1 !important; */
+  background: none !important;
+  border: none !important;
+}
+
+/* active alarm */
+a[title="Set alarm"] {
+  color: var(--primary) !important;
+  font-size: small !important;
+  font-weight: bold !important;
+}
+
+/* navigation bar (below note title) */
+.rli-editor
+  > div
+  > div
+  > div
+  > div[style="padding-top: 10px; padding-bottom: 10px;"] {
+  background-color: var(--grey) !important;
+  box-shadow: var(--shadow) !important;
+  margin-top: -1px;
+  padding: 0 !important;
+  z-index: 10 !important;
+}
+
+/* breadcrumbs (In:...) */
+.rli-editor
+  > div
+  > div
+  > div
+  > div[style="padding-top: 10px; padding-bottom: 10px;"]
+  > button {
+  background: none !important;
+  margin-bottom: 2px !important;
+  margin-left: 5px !important;
+  padding: 0 3px !important;
+}
+.rli-editor
+  > div
+  > div
+  > div[style="padding-top: 10px; padding-bottom: 10px;"]
+  > button:hover {
+  background-color: var(--secondary) !important;
+}
+.rli-editor
+  > div
+  > div
+  > div[style="padding-top: 10px; padding-bottom: 10px;"]
+  > button
+  span {
+  color: var(--icon-color) !important;
+}
+
+/* editor toolbar(s) */
+.editor-toolbar,
+.joplin-tinymce > div,
+.joplin-tinymce .tox .tox-toolbar__primary,
+.joplin-tinymce .tox-toolbar__group {
+  background-color: var(--grey) !important;
+}
+
+/* content */
+.rli-editor > div > div > div > div:nth-last-of-type(3) {
+  background-color: var(--dark) !important;
+}
+.rli-editor
+  > div
+  > div
+  > div
+  > div[style="display: flex; flex: 1 1 0%;"]
+  > div
+  > div:last-of-type {
+  padding: 0 !important;
+}
+
+/* floating toolbar at the bottom */
+.rli-editor
+  > div
+  > div
+  > div
+  > div
+  > div
+  > div[style="position: relative; display: flex; flex-direction: row;"]:first-of-type {
+  bottom: 10px;
+  left: 50%;
+  max-width: 95%;
+  position: absolute !important;
+  transform: translate(-50%);
+  z-index: 20 !important;
+}
+.rli-editor > div > div > div > div > div > div > div.editor-toolbar {
+  border-radius: var(--dialog-radius);
+  box-shadow: var(--shadow);
+}
+button[title="Toggle editors"] {
+  border-left: var(--default-border) !important;
+  margin-left: 4px !important;
+  padding-left: 10px !important;
+}
+
+/* local search & tag list */
+.rli-editor
+  > div
+  > div
+  > div
+  > div[style*="align-items: center;"]:not(:empty):not(:first-of-type) {
+  background-color: var(--grey) !important;
+  /* TODO: add shadow nach oben - wie oben nur andere Richtung */
+}
+
+/* inline local search (right aligned within tag bar) */
+.rli-editor
+  > div
+  > div
+  > div
+  > div[style$="align-items: center;"]:not(:empty):not(:first-of-type) {
+  align-items: center;
+  border: none !important;
+  height: 0;
+  left: 100%;
+  position: relative;
+  transform: translate(-300px, 20px);
+  width: 300px;
+}
+.rli-editor
+  > div
+  > div
+  > div
+  > div[style$="align-items: center;"]:not(:empty):not(:first-of-type)
+  > div {
+  border: none !important;
+}
+.rli-editor > div > div > div > div:nth-last-child(2) > div div {
+  background: none !important;
+  /* set overflow behavior for info text */
+  overflow: overlay;
+}
+
+/**************************************************************************************************
+ *  CODE MIRROR
+ *************************************************************************************************/
+
+.CodeMirror,
+.cm-s-material-darker.CodeMirror {
+  background-color: var(--dark) !important;
+}
+
+.cm-header {
+  color: var(--primary) !important;
+}
+
+/* add line numbers */
+.CodeMirror-code {
+  counter-reset: line;
+}
+.CodeMirror-line:before {
+  border-right: 1px solid var(--grey);
+  color: var(--grey);
+  content: counter(line);
+  counter-increment: line;
+  display: inline-block;
+  margin-right: 0.3em;
+  padding-right: 0.3em;
+  /* TEAK: Adjust width if you have lot of lines (ch = Relative to the width of the "0") */
+  width: 3ch;
+}
+
+/**************************************************************************************************
+ *  TINY MCE
+ *************************************************************************************************/
+
+.joplin-tinymce > div,
+.tox-edit-area > iframe,
+.joplin-tinymce .tox .tox-toolbar__primary,
+.joplin-tinymce .tox-toolbar__group {
+  background: none !important;
+}
+
+/**************************************************************************************************
+ *  DIALOGS
+ *************************************************************************************************/
+
+/* common look for dialogs */
+.smalltalk .page,
+.tox .tox-dialog > div,
+div[style^="z-index: 9999;"] > div {
+  border-radius: var(--dialog-radius) !important;
+  font-size: small !important;
+}
+
+/* note properties */
+div[style^="z-index: 9999;"] a {
+  background: none !important;
+}
+
+/* reduce size of (command palette) drop-down list entries */
+div[style^="z-index: 9999;"] .item-list div > div {
+  font-size: small !important;
+  margin-bottom: 0 !important;
+}
+
+/**************************************************************************************************
+ *  PLUGINS
+ *************************************************************************************************/

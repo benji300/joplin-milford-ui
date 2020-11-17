@@ -1,0 +1,97 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/.git": true,
+			"**/*.code-workspace": true
+		}
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"presentation": {
+			"reveal": "never",
+		},
+		"problemMatcher": [],
+		"windows": {
+			"options": {
+				"cwd": "C:/Users/${env:username}"
+			}
+		},
+		"tasks": [
+			{
+				"label": "Edit: userchrome.css from user profile",
+				"command": "powershell",
+				"group": "build",
+				"args": [
+					"code ./.config/${input:profile}/userchrome.css",
+				]
+			},
+			{
+				"label": "Edit: userstyle.css from user profile",
+				"command": "powershell",
+				"group": "build",
+				"args": [
+					"code ./.config/${input:profile}/userstyle.css",
+				]
+			},
+			{
+				"label": "Diff: Compare with user profile (BCompare)",
+				"command": "C:/Program Files/Beyond Compare 4/BCompare.exe",
+				"group": "build",
+				"args": [
+					"./.config/${input:profile}",
+					"${workspaceFolder}/theme"
+				],
+				"isBackground": true
+			},
+			{
+				"label": "Diff: Compare active file with...",
+				"type": "process",
+				"command": "${command:workbench.files.action.compareFileWith}",
+				"group": "build",
+				"isBackground": true
+			},
+			{
+				"label": "Joplin: Open",
+				"command": "C:/Program Files/Joplin/Joplin.exe",
+				"group": "build",
+				"isBackground": true
+			},
+			{
+				"label": "Joplin: Open (Dev)",
+				"command": "C:/Program Files/Joplin/Joplin.exe",
+				"group": "build",
+				"args": [
+					"--env",
+					"dev"
+				],
+				"isBackground": true
+			},
+			{
+				"label": "Joplin: Open user profile directory",
+				"command": "powershell",
+				"group": "build",
+				"args": [
+					"Invoke-Item ./.config/${input:profile}"
+				],
+				"isBackground": true
+			}
+		],
+		"inputs": [
+			{
+				"id": "profile",
+				"description": "Select user profile directory",
+				"type": "pickString",
+				"default": "default",
+				"options": [
+					"joplin-desktop",
+					"joplindev-desktop"
+				]
+			}
+		]
+	}
+}
