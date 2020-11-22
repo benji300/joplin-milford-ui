@@ -5,26 +5,19 @@
  *************************************************************************************************/
 
 html {
-  /* side-bar background color from light theme */
-  --floating-bg: rgb(49, 54, 64);
-
-  --link-color: rgb(255, 255, 255);
-
+  --primary: rgb(65 105 225);
+  --dark: rgb(30, 39, 46);
+  --grey: rgb(43, 52, 59);
   --overlay-dark1: rgba(0, 0, 0, 0.1);
-  --overlay-dark2: rgba(0, 0, 0, 0.2);
-  --overlay-dark5: rgba(0, 0, 0, 0.5);
-  --overlay-light1: rgba(255, 255, 255, 0.1);
-  --overlay-light5: rgba(255, 255, 255, 0.5);
 
   /* TWEAK: Set to none if no borders shall be shown (not tested) */
-  --default-border: 1px solid var(--overlay-light1);
+  --default-border: 1px solid var(--dark);
 
   /* TWEAK: Change to adapt the style of the corners of some UI elements */
-  --dialog-radius: 10px;
   --scroll-radius: 3px;
 
   /* TWEAK: Show/hide shadow on floating TOC */
-  --shadow: 0 2px 12px 0 var(--overlay-dark2);
+  --shadow: -1px 0 2px -1px rgba(0, 0, 0, 0.2);
 }
 
 /**************************************************************************************************
@@ -32,6 +25,7 @@ html {
  *************************************************************************************************/
 
 body {
+  background: var(--dark) !important;
   font-family: Roboto;
   line-height: 1.2em !important;
 }
@@ -47,13 +41,19 @@ body {
  *************************************************************************************************/
 
 /* horizontal rule */
+h1,
 hr {
+  border-color: var(--grey) !important;
   border-width: 1px !important;
 }
 
 /* strikethrough checked task list items (https://discourse.joplinapp.org/t/share-your-css/1730/189) */
 li.md-checkbox input[type="checkbox"]:checked + label {
   text-decoration: line-through rgba(0, 0, 0, 0.5);
+}
+
+.mermaid {
+  background: none !important;
 }
 
 /**************************************************************************************************
@@ -63,21 +63,21 @@ li.md-checkbox input[type="checkbox"]:checked + label {
 
 nav.table-of-contents > ul {
   background: none;
+  border-color: transparent;
   font-size: small;
-  height: 80%;
-  overflow: hidden;
+  height: 100%;
   padding: 5px;
   position: fixed;
-  right: 6px;
+  right: 0;
   top: 0;
+  transition: 0.2s;
   width: 10px;
   z-index: 10;
 }
 nav.table-of-contents > ul:hover {
-  background-color: var(--floating-bg);
-  border-radius: var(--dialog-radius);
+  background-color: var(--grey);
   box-shadow: var(--shadow);
-  overflow: scroll;
+  overflow: auto;
   width: auto;
 }
 nav.table-of-contents > ul:hover li {
@@ -97,8 +97,6 @@ nav.table-of-contents li {
   white-space: nowrap;
 }
 nav.table-of-contents li a {
-  color: var(--link-color) !important;
-  opacity: 0.8;
   padding: 5px;
 }
 nav.table-of-contents ul li ul li {

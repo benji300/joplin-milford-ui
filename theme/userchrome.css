@@ -7,7 +7,9 @@
 html {
   /* TWEAK: Adapt base colors here */
   --primary: rgb(65 105 225);
-  --dark: #1e272e; /* content background */
+  --secondary: rgb(199, 146, 234);
+  /* --secondary: rgb(255, 203, 107); */
+  --dark: rgb(30, 39, 46); /* content background */
   --grey: rgb(43, 52, 59); /* side-bar, ... */
   --grey2: rgb(36, 46, 52); /* side-bar highlight */
   --white: rgb(255, 255, 255); /* default font color */
@@ -19,9 +21,13 @@ html {
   --overlay-light1: rgba(255, 255, 255, 0.1);
   --overlay-light5: rgba(255, 255, 255, 0.5);
 
+  --opacity-full: 1;
+  --opacity-0-8: 0.8;
+  --opacity-0-5: 0.5;
+
   /* TWEAK: Show shadow on floating buttons and local search */
-  /* --shadow: 0 2px 12px 0 var(--overlay-dark2); */
-  --shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.06);
+  --shadow-bottom: 0 1px 3px -1px rgba(0, 0, 0, 0.2);
+  --shadow-top: 0 -1px 3px -1px rgba(0, 0, 0, 0.2);
 
   /* TWEAK: Set to none if no borders shall be shown (not tested) */
   --default-border: 1px solid var(--dark);
@@ -31,10 +37,6 @@ html {
   --dialog-radius: 10px;
   --input-radius: 10px;
   --scroll-radius: 3px;
-
-  --opacity-full: 1;
-  --opacity-0-8: 0.8;
-  --opacity-0-5: 0.5;
 
   /* TWEAK: Change the style of the tags */
   --tag-color: var(--primary);
@@ -166,10 +168,13 @@ th {
 .note-list .list-item-container i,
 .icon-share,
 /* last changed timestamp */
-.rli-editor > div > div > div > input + span,
+.rli-editor > div > div > div > div > div > span,
 /* toolbar buttons */
 .editor-toolbar .button,
+.editor-toolbar a,
 .tox .tox-tbtn,
+[class*=" icon-"],
+a.button,
 /* toggle editors button */
 button[title="Toggle editors"],
 /* help buttons */
@@ -205,19 +210,21 @@ a.button.disabled {
 }
 
 /* general panel styles */
-.rli-root > div.resizableLayoutItem {
+.rli-root > .resizableLayoutItem {
   border-right: var(--default-border) !important;
 }
-.rli-root > div.resizableLayoutItem > div.resizableLayoutItem {
-  border-bottom: var(--default-border) !important;
-}
-.rli-root > div.resizableLayoutItem > div {
+.rli-root > .resizableLayoutItem > div {
   min-width: 150px !important;
-  width: 100%;
+  width: 100% !important;
 }
-div.resizableLayoutItem > div > div {
-  /* height: 100%; */
+.rli-root > .resizableLayoutItem > .resizableLayoutItem {
+  border-top: var(--default-border) !important;
 }
+.rli-root > .resizableLayoutItem > .resizableLayoutItem > div {
+  height: 100% !important;
+  width: 100% !important;
+}
+
 /* remove border from plugin iframes */
 div.resizableLayoutItem iframe {
   border-bottom: none !important;
@@ -226,13 +233,11 @@ div.resizableLayoutItem iframe {
 /* highlight splitters (vertical and horizontal) while dragging */
 .resizableLayoutItem > span > div {
   z-index: 100 !important;
+  transition: 0.5s;
 }
 .resizableLayoutItem > span > div:hover,
 .resizableLayoutItem > span > div:active {
   background: var(--primary);
-  opacity: var(--opacity-0-8);
-}
-.resizableLayoutItem > span > div:hover {
   opacity: var(--opacity-0-5);
 }
 
@@ -287,10 +292,6 @@ div.resizableLayoutItem iframe {
  *  NOTE LIST
  *************************************************************************************************/
 
-div[height="50"] {
-  height: auto !important;
-}
-
 /* icon search */
 .rli-noteList > div span[class$="icon-search"] {
   color: var(--icons) !important;
@@ -311,26 +312,30 @@ div[height="50"] {
 } */
 
 /* note list entries */
+.rli-noteList > div > div:not(.note-list),
+.rli-noteList > div > div > div:last-of-type:not(.note-list) > div {
+  background: none !important;
+  text-align: center !important;
+  width: 100% !important;
+}
 .item-list.note-list .list-item-container {
-  margin-left: 4px !important;
-}
-.item-list.note-list .list-item-container > a {
-  padding: 0 4px !important;
-}
-.item-list.note-list .list-item-container > div {
-  padding-left: 4px !important;
-}
-.item-list.note-list .list-item-container:hover {
-  background-color: var(--grey2) !important;
-}
-.item-list.note-list .list-item-container > a > span {
-  overflow: hidden;
-  text-overflow: ellipsis;
+  padding: 0 16px !important;
+  width: 100% !important;
 }
 .item-list.note-list .list-item-container::before {
   border-color: var(--dark) !important;
-  left: 0 !important;
-  width: 100% !important;
+}
+.item-list.note-list .list-item-container > a,
+.item-list.note-list .list-item-container > div {
+  padding: 0 !important;
+}
+.item-list.note-list .list-item-container:hover {
+  background-color: var(--overlay-dark1) !important;
+}
+.item-list.note-list .list-item-container > a > span {
+  /* adds "..." to notes with long titles */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* floating new note button */
@@ -340,9 +345,8 @@ div[height="50"] > div:nth-child(2) {
   z-index: 20 !important;
 }
 div[height="50"] > div:nth-child(2) button {
-  background: var(--primary) !important;
   border-radius: 10px !important;
-  box-shadow: var(--shadow) !important;
+  box-shadow: var(--shadow-bottom) !important;
   display: flex !important;
   margin: 0 10px 0 0 !important;
   min-height: 35px !important;
@@ -354,6 +358,12 @@ div[height="50"] > div:nth-child(2) button:hover {
 }
 div[height="50"] > div:nth-child(2) button span {
   color: var(--white) !important;
+}
+button[title="New to-do"] {
+  background: var(--primary) !important;
+}
+button[title="New note"] {
+  background: var(--secondary) !important;
 }
 
 /**************************************************************************************************
@@ -375,7 +385,8 @@ div[height="50"] > div:nth-child(2) button span {
 /* note title bar */
 .rli-editor > div > div > div > div:first-of-type {
   background-color: var(--grey) !important;
-  box-shadow: var(--shadow) !important;
+  border-bottom: var(--default-border) !important;
+  box-shadow: var(--shadow-bottom) !important;
   height: 40px !important;
   padding: 5px !important;
   z-index: 10 !important;
@@ -410,7 +421,8 @@ a[title="Set alarm"] {
   > div
   > div[style="padding-top: 10px; padding-bottom: 10px;"] {
   background-color: var(--grey) !important;
-  box-shadow: var(--shadow) !important;
+  border-bottom: var(--default-border) !important;
+  box-shadow: var(--shadow-bottom) !important;
   margin-top: -1px;
   padding: 0 !important;
   z-index: 10 !important;
@@ -483,7 +495,7 @@ a[title="Set alarm"] {
 }
 .rli-editor > div > div > div > div > div > div > div.editor-toolbar {
   border-radius: var(--dialog-radius);
-  box-shadow: var(--shadow);
+  border: var(--default-border) !important;
 }
 button[title="Toggle editors"] {
   border-left: var(--default-border) !important;
@@ -498,7 +510,9 @@ button[title="Toggle editors"] {
   > div
   > div[style*="align-items: center;"]:not(:empty):not(:first-of-type) {
   background-color: var(--grey) !important;
-  /* TODO: add shadow nach oben - wie oben nur andere Richtung */
+  border-top: var(--default-border) !important;
+  box-shadow: var(--shadow-top) !important;
+  z-index: 10 !important;
 }
 
 /* inline local search (right aligned within tag bar) */
@@ -547,7 +561,6 @@ button[title="Toggle editors"] {
   counter-reset: line;
 }
 .CodeMirror-line:before {
-  border-right: 1px solid var(--grey);
   color: var(--grey);
   content: counter(line);
   counter-increment: line;
