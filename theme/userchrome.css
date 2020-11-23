@@ -178,6 +178,7 @@ a[Title="Tags"] + div > span {
 }
 [class*=" icon-"]:hover,
 a.button:hover > [class*=" icon-"],
+a.button:hover > i,
 a.button:hover,
 .fas:hover,
 .fab:hover,
