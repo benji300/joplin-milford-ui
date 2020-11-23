@@ -4,6 +4,9 @@ _joplin-milford-ui_ is a theme to adapt the UI of [Joplin's](https://joplinapp.o
 
 > **Visit [Milford Sound](https://www.newzealand.com/int/milford-sound/) in New Zealand! :heart_eyes:**
 
+> **NOTE** - In order to get the best result, it is highly recommended to set the internal color theme to `Dark`. 
+For details please see [Installation](#installation).
+
 > :warning: **CAUTION** - This theme requires at least version **v1.4.10**
 
 ## Table of contents
@@ -50,19 +53,19 @@ This theme changes the following parts of the user interface.
 ## Installation
 
 - Open Joplin
-- Navigate to `Joplin > Preferences > Appearances`
-- Click `Advanced Settings`
-- Click `Custom stylesheet for rendered Markdown` and paste the content from [userstyle.css](./theme/userstyle.css)
-- Click `Custom stylesheet for Joplin-wide app styles` and paste the content from [userchrome.css](./theme/userchrome.css)
-- Save your changes and restart Joplin to see the changes
+- Navigate to `Tools > Options > Appearance` and select `Dark` as `Theme`
+- Apply changes and close Options
+- Open the user profile directory via `Help > Open profile directory`
+- Download the latest [userstyle.css](./theme/userstyle.css) and [userchrome.css](./theme/userchrome.css) into the opened user profile directory
+- Restart Joplin to see the changes
 
 ## UI tweaks
 
 - Open Joplin
-- Navigate to `Joplin > Preferences > Appearances`
-- Click `Advanced Settings`
-- Click `Custom stylesheet for rendered Markdown` to open `userstyle.css` in any text editor
-- Click `Custom stylesheet for Joplin-wide app styles` to open `userchrome.css` in any text editor
+- Navigate to `Tools > Options > Appearance`
+- Click `Show Advanced Settings`
+- Click `Edit` below `Custom stylesheet for rendered Markdown` to open `userstyle.css` in a text editor
+- Click `Edit` below `Custom stylesheet for Joplin-wide app styles` to open `userchrome.css` in a text editor
 - Search for `TWEAK` and change the styles as described if you want
 - Save your changes and restart Joplin to see the changes
 

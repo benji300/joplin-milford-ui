@@ -127,11 +127,6 @@ button,
   border: var(--default-border) !important;
 }
 
-/* icons */
-.fas {
-  background: none !important;
-}
-
 /* table cells */
 th {
   background-color: var(--overlay-dark1) !important;
@@ -161,34 +156,26 @@ th {
   color: var(--tag-font-color) !important;
 }
 
-/* decrease opacity of icons and labels */
-/* new notebook button */
-.side-bar > div > div > button,
-/* external editing button */
-.note-list .list-item-container i,
-.icon-share,
-/* last changed timestamp */
-.rli-editor > div > div > div > div > div > span,
-/* toolbar buttons */
-.editor-toolbar .button,
-.editor-toolbar a,
-.tox .tox-tbtn,
+/* global icon and label style */
 [class*=" icon-"],
 a.button,
-/* toggle editors button */
-button[title="Toggle editors"],
-/* help buttons */
-.fa-question-circle,
-/* tags buttons */
-span.icon-tags,
+.fas,
+.fa,
+/* last changed timestamp */
+.rli-editor > div > div > div > div > div > span,
 /* click to add tags label */
 a[Title="Tags"] + div > span {
   color: var(--icons) !important;
-  /* opacity: 0.6 !important; */
+  transition: 0.4s;
 }
-/* disabled buttons */
-a.button.disabled {
-  /* opacity: 0.3 !important; */
+[class*=" icon-"]:hover,
+a.button:hover > [class*=" icon-"],
+a.button:hover,
+.fas:hover,
+.fa:hover {
+  background: none !important;
+  color: var(--primary) !important;
+  cursor: pointer !important;
 }
 
 /* date picker */
@@ -291,11 +278,6 @@ div.resizableLayoutItem iframe {
 /**************************************************************************************************
  *  NOTE LIST
  *************************************************************************************************/
-
-/* icon search */
-.rli-noteList > div span[class$="icon-search"] {
-  color: var(--icons) !important;
-}
 
 /* note list */
 .rli-noteList div {
@@ -528,6 +510,7 @@ button[title="Toggle editors"] {
   position: relative;
   transform: translate(-300px, 20px);
   width: 300px;
+  z-index: 20 !important;
 }
 .rli-editor
   > div
