@@ -4,8 +4,8 @@ _joplin-milford-ui_ is a theme to adapt the UI of [Joplin's](https://joplinapp.o
 
 > **Visit [Milford Sound](https://www.newzealand.com/int/milford-sound/) in New Zealand! :heart_eyes:**
 
-> **NOTE** - In order to get the best result, it is highly recommended to set the internal color theme to `Dark`. 
-For details please see [Installation](#installation).
+> **NOTE** - In order to get the best result, it is highly recommended to set the internal color theme to `Dark`.
+> For details please see [Installation](#installation).
 
 > :warning: **CAUTION** - This theme requires at least version **v1.4.10**
 
@@ -23,17 +23,15 @@ For details please see [Installation](#installation).
 
 This theme changes the following parts of the user interface.
 
-// TODO
+- Clean user interface with dark colors
 - Colored tags
-- Cleaner note list including floating plus button to create new notes/to-dos
+- Clean note list including floating buttons to create new notes/to-dos
 - Floating editor toolbar at the bottom of the editor content
   - Not supported for TinyMCE
-- Local search inlined with tag list
+- Local search inlined within tag list
 - Improved style of panel splitters
   - Highlighted while dragging
 - Changed style of synchronize area and button
-- Decreased visibility of toolbar icons
-  - To focus more on content
 - Floating TOC on the right for rendered Markdown mode
   - Based on the idea from [here](https://discourse.joplinapp.org/t/toc-as-the-sidebar/5979/34)
   - Requires `[[toc]]` in note content
@@ -42,13 +40,11 @@ This theme changes the following parts of the user interface.
 - Changed visibility of some UI elements by default
   - Can be adapted manually - see [UI tweaks](#ui-tweaks)
 
-> **Works with all built-in color themes**
-
 ## Screenshots
 
 // TODO create screenshot
 
-![Dark Theme](./assets/main.png)
+![Main view](./assets/main.png)
 
 ## Installation
 

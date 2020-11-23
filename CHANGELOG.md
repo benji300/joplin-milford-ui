@@ -7,8 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-> :warning: **CAUTION** - Requires at least version **v1.4.10**
-
 - Initial Release
 
 ## [0.1.0] - xxxx-xx-xx

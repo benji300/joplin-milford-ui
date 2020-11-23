@@ -114,9 +114,11 @@ button,
 .smalltalk .page button,
 /* tinymce */
 .tox button[class^="tox-button"] {
+  /* background: var(--grey2) !important; */
   border-radius: var(--button-radius) !important;
+  /* border-color: var(--dark) !important; */
   box-shadow: none !important;
-  color: var(--primary) !important;
+  /* color: var(--white) !important; */
   cursor: pointer !important;
   font-weight: normal !important;
   text-shadow: none !important;
@@ -125,6 +127,11 @@ button,
 .tox button[class^="tox-button"] {
   background: none !important;
   border: var(--default-border) !important;
+}
+button:hover,
+.smalltalk .page button:hover,
+.tox button[class^="tox-button"]:hover {
+  color: var(--primary) !important;
 }
 
 /* table cells */
@@ -159,19 +166,21 @@ th {
 /* global icon and label style */
 [class*=" icon-"],
 a.button,
-.fas,
 .fa,
+.fab,
+.fas,
 /* last changed timestamp */
 .rli-editor > div > div > div > div > div > span,
 /* click to add tags label */
 a[Title="Tags"] + div > span {
   color: var(--icons) !important;
-  transition: 0.4s;
+  transition: 0.2s;
 }
 [class*=" icon-"]:hover,
 a.button:hover > [class*=" icon-"],
 a.button:hover,
 .fas:hover,
+.fab:hover,
 .fa:hover {
   background: none !important;
   color: var(--primary) !important;
@@ -353,7 +362,9 @@ button[title="New note"] {
  *************************************************************************************************/
 
 /* editor column */
-.rli-editor > div {
+.rli-editor > div,
+.rli-editor > div > div {
+  margin-bottom: 0 !important;
   padding: 0px !important;
   width: 100% !important;
 }
@@ -369,22 +380,13 @@ button[title="New note"] {
   background-color: var(--grey) !important;
   border-bottom: var(--default-border) !important;
   box-shadow: var(--shadow-bottom) !important;
-  height: 40px !important;
+  height: 50px !important;
   padding: 5px !important;
   z-index: 10 !important;
 }
-/* .rli-editor > div > div > div > div:first-of-type > .editor-toolbar {
-  background-color: var(--grey) !important;
-} */
 
 /* note title */
 .rli-editor > div > div > div > div > input {
-  /* background: var(--dark) !important;
-  border-radius: var(--dialog-radius) var(--dialog-radius) 0 0 !important;
-  height: 40px;
-  margin-left: 0 !important;
-  margin-top: 10px;
-  opacity: 1 !important; */
   background: none !important;
   border: none !important;
 }
@@ -425,17 +427,21 @@ a[title="Set alarm"] {
 .rli-editor
   > div
   > div
-  > div[style="padding-top: 10px; padding-bottom: 10px;"]
-  > button:hover {
-  background-color: var(--secondary) !important;
-}
-.rli-editor
-  > div
   > div
   > div[style="padding-top: 10px; padding-bottom: 10px;"]
   > button
   span {
-  color: var(--icon-color) !important;
+  color: var(--icons) !important;
+  transition: 0.2s;
+}
+.rli-editor
+  > div
+  > div
+  > div
+  > div[style="padding-top: 10px; padding-bottom: 10px;"]
+  > button:hover
+  span {
+  color: var(--primary) !important;
 }
 
 /* editor toolbar(s) */
@@ -458,6 +464,11 @@ a[title="Set alarm"] {
   > div
   > div:last-of-type {
   padding: 0 !important;
+}
+
+/* editor layout splitter */
+.rli-editor > div > div > div > div > div > div > div:last-of-type {
+  border-color: var(--grey) !important;
 }
 
 /* floating toolbar at the bottom */
@@ -483,6 +494,10 @@ button[title="Toggle editors"] {
   border-left: var(--default-border) !important;
   margin-left: 4px !important;
   padding-left: 10px !important;
+}
+button[title="Toggle editors"] > div {
+  background-color: var(--dark) !important;
+  border-color: var(--icons) !important;
 }
 
 /* local search & tag list */
@@ -573,8 +588,17 @@ button[title="Toggle editors"] {
 .smalltalk .page,
 .tox .tox-dialog > div,
 div[style^="z-index: 9999;"] > div {
+  background: var(--grey) !important;
   border-radius: var(--dialog-radius) !important;
+  color: rgb(221, 221, 221) !important;
   font-size: small !important;
+}
+div[style^="z-index: 9999;"] > div > div {
+  background: none !important;
+}
+div[style^="z-index: 9999;"] input[id*="react-select"] {
+  background: none !important;
+  border: none !important;
 }
 
 /* note properties */
