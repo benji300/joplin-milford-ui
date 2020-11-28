@@ -381,7 +381,7 @@ button[title="New note"] {
   background-color: var(--grey) !important;
   border-bottom: var(--default-border) !important;
   box-shadow: var(--shadow-bottom) !important;
-  height: 50px !important;
+  min-height: 50px !important;
   padding: 5px !important;
   z-index: 10 !important;
 }

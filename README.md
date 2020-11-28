@@ -7,7 +7,7 @@ _joplin-milford-ui_ is a theme to adapt the UI of [Joplin's](https://joplinapp.o
 > **NOTE** - In order to get the best result, it is highly recommended to set the internal color theme to `Dark`.
 > For details please see [Installation](#installation).
 
-> :warning: **CAUTION** - This theme requires at least version **v1.4.10**
+> :warning: **CAUTION** - Requires Joplin **v1.4.12** or newer
 
 ## Table of contents
 
@@ -41,8 +41,6 @@ This theme changes the following parts of the user interface.
   - Can be adapted manually - see [UI tweaks](#ui-tweaks)
 
 ## Screenshots
-
-// TODO create screenshot
 
 ![Main view](./assets/main.png)
 
