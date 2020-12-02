@@ -378,11 +378,11 @@ button[title="New note"] {
 
 /* note title bar */
 .rli-editor > div > div > div > div:first-of-type {
-  background-color: var(--grey) !important;
+  background-color: var(--dark) !important;
   border-bottom: var(--default-border) !important;
   box-shadow: var(--shadow-bottom) !important;
+  margin-bottom: 0 !important;
   min-height: 50px !important;
-  padding: 5px !important;
   z-index: 10 !important;
 }
 
@@ -405,7 +405,7 @@ a[title="Set alarm"] {
   > div
   > div
   > div[style="padding-top: 10px; padding-bottom: 10px;"] {
-  background-color: var(--grey) !important;
+  background-color: var(--dark) !important;
   border-bottom: var(--default-border) !important;
   box-shadow: var(--shadow-bottom) !important;
   margin-top: -1px;
@@ -451,6 +451,9 @@ a[title="Set alarm"] {
 .joplin-tinymce .tox .tox-toolbar__primary,
 .joplin-tinymce .tox-toolbar__group {
   background-color: var(--grey) !important;
+}
+.rli-editor > div > div > div > div:first-of-type .editor-toolbar {
+  background-color: var(--dark) !important;
 }
 
 /* content */

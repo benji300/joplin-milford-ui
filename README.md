@@ -1,13 +1,13 @@
 # Joplin - Milford UI
 
-_joplin-milford-ui_ is a theme to adapt the UI of [Joplin's](https://joplinapp.org/) desktop application.
+Milford UI is a theme to adapt the UI of [Joplin's](https://joplinapp.org/) desktop application.
 
 > **Visit [Milford Sound](https://www.newzealand.com/int/milford-sound/) in New Zealand! :heart_eyes:**
 
 > **NOTE** - In order to get the best result, it is highly recommended to set the internal color theme to `Dark`.
 > For details please see [Installation](#installation).
 
-> :warning: **CAUTION** - Requires Joplin **v1.4.12** or newer
+> :warning: **CAUTION** - Requires Joplin **v1.4.18** or newer
 
 ## Table of contents
 
