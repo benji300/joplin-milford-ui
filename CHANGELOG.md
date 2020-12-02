@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- None
+- Disable CodeMirror line numbers hack by default
+  - Instead added support for CodeMirror line numbers [plugin](https://github.com/shantanugoel/joplin-plugin-cm-linenumbers/)
 
 ## [0.1.0] - 2020-11-28
 
